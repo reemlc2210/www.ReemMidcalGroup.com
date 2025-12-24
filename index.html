@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Reem Medical Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0f9d9d, #00b14f); /* أخضر + أزرق */
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        img.logo { <img src="logo.png" alt="Reem Medical Group Logo" class="logo">
+            max-width: 80%; /* يتناسب مع جميع الشاشات */
+            height: auto;
+            margin-bottom: 25px; /* مسافة مناسبة تحت اللوجو */
+        }
+        h1 {
+            color: #0f9d9d;
+        }
+        p {
+            color: #555;
+        }
+        a.button {
+            display: block;
+            text-decoration: none;
+            background: #0f9d9d;
+            color: #fff;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        a.button:hover {
+            background: #0c7f7f;
+        }
+        .lang-toggle {
+            margin-bottom: 15px;
+            cursor: pointer;
+            color: #0f9d9d;
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+        /* Responsive adjustments */
+        @media(max-width: 480px) {
+            .container {
+                margin: 30px 10px;
+                padding: 20px;
+            }
+            a.button {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- اللوجو -->
+    <img src="logo.png" alt="Reem Medical Group Logo" class="logo">
+
+    <!-- زر تغيير اللغة -->
+    <div class="lang-toggle" onclick="toggleLang()">Switch to English</div>
+
+    <!-- عربي -->
+    <h1 id="title-ar">مجموعة الريم الطبية</h1>
+    <p id="desc-ar">الخدمات الطبية والرعاية الصحية</p>
+    <a class="button" href="https://www.facebook.com/ReemSpecialistClinic" target="_blank">عيادات ريم التخصصية – الخارجة</a>
+    <a class="button" href="https://www.facebook.com/NewReemLab" target="_blank">معمل ريم للتحاليل الطبية</a>
+    <a class="button" href="https://www.facebook.com/profile.php?id=61581364335437" target="_blank">مجمع الطحان الطبي</a>
+    <a class="button" href="https://www.facebook.com/profile.php?id=61561399355206" target="_blank">عيادات ريم فرع الداخلة</a>
+    <a class="button" href="https://www.facebook.com/profile.php?id=61579299571751" target="_blank">مركز ريم للعلاج الطبيعي</a>
+
+    <!-- إنجليزي -->
+    <h1 id="title-en" style="display:none;">Reem Medical Group</h1>
+    <p id="desc-en" style="display:none;">Healthcare & Medical Services</p>
+    <a id="fb1-en" class="button" href="https://www.facebook.com/ReemSpecialistClinic" target="_blank" style="display:none;">Reem Specialist Clinic – El Kharga</a>
+    <a id="fb2-en" class="button" href="https://www.facebook.com/NewReemLab" target="_blank" style="display:none;">Reem Lab</a>
+    <a id="fb3-en" class="button" href="https://www.facebook.com/profile.php?id=61581364335437" target="_blank" style="display:none;">Al Tahan Medical Complex</a>
+    <a id="fb4-en" class="button" href="https://www.facebook.com/profile.php?id=61561399355206" target="_blank" style="display:none;">Reem Clinics – El Dakahla</a>
+    <a id="fb5-en" class="button" href="https://www.facebook.com/profile.php?id=61579299571751" target="_blank" style="display:none;">Reem Physiotherapy Center</a>
+
+    <footer>© 2025 Reem Medical Group</footer>
+</div>
+
+<script>
+function toggleLang() {
+    var arVisible = document.getElementById("title-ar").style.display !== "none";
+
+    // Toggle Arabic
+    document.getElementById("title-ar").style.display = arVisible ? "none" : "block";
+    document.getElementById("desc-ar").style.display = arVisible ? "none" : "block";
+    var arButtons = document.querySelectorAll(".container > a.button:not([id^=fb])");
+    arButtons.forEach(btn => btn.style.display = arVisible ? "none" : "block");
+
+    // Toggle English
+    document.getElementById("title-en").style.display = arVisible ? "block" : "none";
+    document.getElementById("desc-en").style.display = arVisible ? "block" : "none";
+    var enButtons = document.querySelectorAll("[id^=fb][id$='-en']");
+    enButtons.forEach(btn => btn.style.display = arVisible ? "block" : "none");
+
+    // Toggle button text
+    document.querySelector(".lang-toggle").textContent = arVisible ? "التبديل إلى العربية" : "Switch to English";
+}
+</script>
+
+</body>
+</html>
